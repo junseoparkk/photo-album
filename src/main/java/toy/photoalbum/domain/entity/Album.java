@@ -44,4 +44,8 @@ public class Album extends BaseTimeEntity {
     public int countPhotos() {
         return photos.size();
     }
+
+    public void addPhoto(Photo photo) {
+        photos.add(photo);
+    }
 }
