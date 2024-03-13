@@ -40,4 +40,8 @@ public class Album extends BaseTimeEntity {
     public void changeName(String name) {
         this.name = name;
     }
+
+    public int countPhotos() {
+        return photos.size();
+    }
 }
