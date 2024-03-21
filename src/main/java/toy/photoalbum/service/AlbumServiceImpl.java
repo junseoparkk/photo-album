@@ -35,6 +35,15 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
+    public Album findByName(String name) {
+        try {
+            return albumRepository.findByName(name);
+        } catch (Exception e) {
+            throw new EntityNotFoundException(String.format("Could not find by name : %s", name));
+        }
+    }
+
+    @Override
     public List<Album> findAll() {
         return null;
     }

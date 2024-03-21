@@ -6,4 +6,5 @@ import toy.photoalbum.domain.entity.Album;
 
 @Repository
 public interface AlbumRepository extends JpaRepository<Album, Long> {
+    Album findByName(String name);
 }
