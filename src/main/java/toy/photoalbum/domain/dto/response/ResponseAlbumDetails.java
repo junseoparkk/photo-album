@@ -7,35 +7,49 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
 public class ResponseAlbumDetails {
-    private Long id;
+    @Getter @Setter
+    static class BasicResponse {
+        private Long id;
 
-    private String name;
+        private String name;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createdDate;
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        private LocalDateTime createdDate;
 
-    int photoCount;
+        private int photoCount;
 
-    List<String> thumbnailUrls;
-
-    @Builder
-    public ResponseAlbumDetails(Long id, String name, LocalDateTime createdDate, int photoCount, List<String> thumbnailUrls) {
-        this.id = id;
-        this.name = name;
-        this.createdDate = createdDate;
-        this.photoCount = photoCount;
-        this.thumbnailUrls = thumbnailUrls;
+        @Builder
+        public BasicResponse of(Long id, String name, LocalDateTime createdDate, int photoCount) {
+            return builder()
+                    .id(id)
+                    .name(name)
+                    .createdDate(createdDate)
+                    .photoCount(photoCount)
+                    .build();
+        }
     }
 
-    @Builder
-    public static ResponseAlbumDetails of(Long id, String name, LocalDateTime createdDate, int photoCount) {
-        return builder()
-                .id(id)
-                .name(name)
-                .createdDate(createdDate)
-                .photoCount(photoCount)
-                .build();
+    @Getter @Setter
+    static class InfoResponse {
+        private Long id;
+
+        private String name;
+
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        private LocalDateTime createdDate;
+
+        private int photoCount;
+
+        private List<String> thumbnailUrls;
+
+        @Builder
+        public InfoResponse(Long id, String name, LocalDateTime createdDate, int photoCount, List<String> thumbnailUrls) {
+            this.id = id;
+            this.name = name;
+            this.createdDate = createdDate;
+            this.photoCount = photoCount;
+            this.thumbnailUrls = thumbnailUrls;
+        }
     }
 }
