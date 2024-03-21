@@ -9,7 +9,7 @@ import lombok.Setter;
 
 public class ResponseAlbumDetails {
     @Getter @Setter
-    static class BasicResponse {
+    public static class BasicResponse {
         private Long id;
 
         private String name;
@@ -20,7 +20,7 @@ public class ResponseAlbumDetails {
         private int photoCount;
 
         @Builder
-        public BasicResponse of(Long id, String name, LocalDateTime createdDate, int photoCount) {
+        public static BasicResponse of(Long id, String name, LocalDateTime createdDate, int photoCount) {
             return builder()
                     .id(id)
                     .name(name)
@@ -31,7 +31,7 @@ public class ResponseAlbumDetails {
     }
 
     @Getter @Setter
-    static class InfoResponse {
+    public static class InfoResponse {
         private Long id;
 
         private String name;
@@ -44,12 +44,14 @@ public class ResponseAlbumDetails {
         private List<String> thumbnailUrls;
 
         @Builder
-        public InfoResponse(Long id, String name, LocalDateTime createdDate, int photoCount, List<String> thumbnailUrls) {
-            this.id = id;
-            this.name = name;
-            this.createdDate = createdDate;
-            this.photoCount = photoCount;
-            this.thumbnailUrls = thumbnailUrls;
+        public static InfoResponse of(Long id, String name, LocalDateTime createdDate, int photoCount, List<String> thumbnailUrls) {
+            return builder()
+                    .id(id)
+                    .name(name)
+                    .createdDate(createdDate)
+                    .photoCount(photoCount)
+                    .thumbnailUrls(thumbnailUrls)
+                    .build();
         }
     }
 }
