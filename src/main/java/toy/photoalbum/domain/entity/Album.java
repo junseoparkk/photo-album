@@ -48,4 +48,12 @@ public class Album extends BaseTimeEntity {
     public void addPhoto(Photo photo) {
         photos.add(photo);
     }
+
+    public List<String> getThumbnailUrls() {
+        List<String> urls = new ArrayList<>();
+        for (Photo photo : photos) {
+            urls.add(photo.getThumbnailUrl());
+        }
+        return urls;
+    }
 }
