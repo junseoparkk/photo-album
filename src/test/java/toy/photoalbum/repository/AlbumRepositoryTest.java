@@ -98,4 +98,18 @@ class AlbumRepositoryTest {
         Optional<Album> findAlbum = albumRepository.findById(savedAlbum.getId());
         assertThat(findAlbum.isEmpty()).isTrue();
     }
+
+    @DisplayName("이름으로 앨범 찾는 기능 테스트")
+    @Test
+    void findByNameTest() {
+        //given
+        Album album = new Album("test");
+        albumRepository.save(album);
+
+        //when
+        Album findAlbum = albumRepository.findByName(album.getName());
+
+        //then
+        assertThat(findAlbum.getName()).isEqualTo(album.getName());
+    }
 }
